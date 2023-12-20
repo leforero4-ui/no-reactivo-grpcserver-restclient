@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package estudio;
+
+option java_multiple_files = true;
+option java_package = "com.estudio.miprotobuf";
+option java_outer_classname = "MyProto";
+
+message BookObject {
+  int64 id = 1;
+  string name = 2;
+  string author = 3;
+}
+
+message BookObjectList {
+  repeated BookObject bookObjects = 1;
+}
+
+message Empty {}
+
+service booksServiceGrpc {
+  rpc getAllBookObjects(Empty) returns (BookObjectList);
+  rpc addBookObject(BookObject) returns (BookObject);
+}
